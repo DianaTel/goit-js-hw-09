@@ -87,7 +87,6 @@ function onPromiseCreate(e) {
   let inputAmount = Number(form.querySelector('input[name="amount"]').value);
 
   for (let i = 1; i <= inputAmount; i += 1) {
-    inputDelay += inputStep;
 
     createPromise(i, inputDelay)
       .then(({ position, delay }) => {
@@ -96,5 +95,7 @@ function onPromiseCreate(e) {
       .catch(({ position, delay }) => {
         Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
       });
+
+      inputDelay += inputStep;
   }
 }
